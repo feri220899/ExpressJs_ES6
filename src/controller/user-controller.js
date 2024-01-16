@@ -7,13 +7,12 @@ const getAllUsers = async (req, res) => {
         const data = await UserModel.getAllUsers();
         Response.successRes(res, 'success', 200, data, 'Users retrieved successfully');
         data.forEach(user => {
-            console.log(user.kd_pendaftaran);
-            user.getLoket.forEach(loketData => {
-                console.log(loketData.kd_loket);
+            console.log(user.name);
+            user.getCars.forEach(cars => {
+                console.log([cars.cars_name, cars]);
             });
         });
     } catch (error) {
-        console.error(error);
         Response.errorRes(res, 'error', null, 'Internal Server Error');
     }
 };

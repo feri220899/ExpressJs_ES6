@@ -6,7 +6,7 @@ const getAllUsers = async () => {
         const [ userRows ] = await pool.query('SELECT id, name, password, phone FROM user');
         const userList = await Promise.all(userRows.map(async (user) => {
             const carsRows = await pool.query(`SELECT * FROM cars WHERE id_user = '${user.id}'`);
-            user.getLoket = carsRows[ 0 ];
+            user.getCars = carsRows[ 0 ];
             return user;
         }));
         return userList;
